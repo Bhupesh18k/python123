@@ -1,73 +1,73 @@
 # # 1. Write a Python function to create a table named employees with columns id (integer), name (text), age (integer), and department (text) in the test.db database.
-# import sqlite3
-# def create():
-#     connection= sqlite3.connect("test.db")
-#     cursor = connection.cursor()
-#     cursor.execute("""
-#         CREATE TABLE IF NOT EXISTS employees
-#             (id INTEGER PRIMARY KEY,
-#             name TEXT,
-#             age INTEGER,
-#             department TEXT)
-#             """)
-#     connection.commit()
-#     connection.close()
-# create()
+import sqlite3
+def create():
+    connection= sqlite3.connect("test.db")
+    cursor = connection.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS employees
+            (id INTEGER PRIMARY KEY,
+            name TEXT,
+            age INTEGER,
+            department TEXT)
+            """)
+    connection.commit()
+    connection.close()
+create()
 
 # # 2. Insert at least 5 different employees into the employees table using a Python function “insert_employee()” and then calling it from outside.
 # # Insert 5 different employees
-# # insert_employee(1, 'Alice', 30, 'HR')
-# # insert_employee(2, 'Bob', 25, 'Engineering')
-# # insert_employee(3, 'Charlie', 28, 'Sales')
-# # insert_employee(4, 'David', 35, 'Marketing')
-# # insert_employee(5, 'Eve', 22, 'HR')
-# def insert_employee(empid, name, age, department):
-#     connection = sqlite3.connect("test.db")
-#     cursor = connection.cursor()
-#     cursor.execute("""
-#         INSERT OR IGNORE INTO employees (id, name, age, department) VALUES (?, ?, ?, ?)
-#     """, (empid, name, age, department))
-#     connection.commit()
-#     connection.close()
 # insert_employee(1, 'Alice', 30, 'HR')
 # insert_employee(2, 'Bob', 25, 'Engineering')
 # insert_employee(3, 'Charlie', 28, 'Sales')
 # insert_employee(4, 'David', 35, 'Marketing')
 # insert_employee(5, 'Eve', 22, 'HR')
+def insert_employee(empid, name, age, department):
+    connection = sqlite3.connect("test.db")
+    cursor = connection.cursor()
+    cursor.execute("""
+        INSERT OR IGNORE INTO employees (id, name, age, department) VALUES (?, ?, ?, ?)
+    """, (empid, name, age, department))
+    connection.commit()
+    connection.close()
+insert_employee(1, 'Alice', 30, 'HR')
+insert_employee(2, 'Bob', 25, 'Engineering')
+insert_employee(3, 'Charlie', 28, 'Sales')
+insert_employee(4, 'David', 35, 'Marketing')
+insert_employee(5, 'Eve', 22, 'HR')
 
 
 # # 3. Write a Python function to update the department of employees with id ‘2’and ‘4’ into “Data Science”.
-# def update():
-#     connection = sqlite3.connect("test.db")
-#     cursor = connection.cursor()
-#     cursor.execute("""
-#         UPDATE employees
-#         SET department = 'Data Science'
-#         WHERE id IN (2, 4)
-#     """)
-#     connection.commit()
-#     connection.close()
-# update()
+def update():
+    connection = sqlite3.connect("test.db")
+    cursor = connection.cursor()
+    cursor.execute("""
+        UPDATE employees
+        SET department = 'Data Science'
+        WHERE id IN (2, 4)
+    """)
+    connection.commit()
+    connection.close()
+update()
 
 # # 4. Write a Python function to delete an employee from the employees table whose ID is ‘4’.
-# def delete(emp_id):
-#     connection= sqlite3.connect("test.db")
-#     cursor = connection.cursor()
-#     cursor.execute("DELETE FROM employees WHERE id = ?", (emp_id,))
-#     connection.commit()
-#     connection.close()
-# delete(4)
+def delete(emp_id):
+    connection= sqlite3.connect("test.db")
+    cursor = connection.cursor()
+    cursor.execute("DELETE FROM employees WHERE id = ?", (emp_id,))
+    connection.commit()
+    connection.close()
+delete(4)
 
 # # 5. Write a Python function to fetch and display employees older than 25 years.
-# def fetch():
-#     connection=sqlite3.connect("test.db")
-#     cursor = connection.cursor()
-#     cursor.execute("SELECT * FROM employees WHERE age > 25")
-#     records = cursor.fetchall()
-#     for row in records:
-#         print(row)
-#     connection.close()
-# fetch()
+def fetch():
+    connection=sqlite3.connect("test.db")
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM employees WHERE age > 25")
+    records = cursor.fetchall()
+    for row in records:
+        print(row)
+    connection.close()
+fetch()
 
 
 # 6. Create an abstract base class Shape with encapsulated area attributes and an abstract area() method.
